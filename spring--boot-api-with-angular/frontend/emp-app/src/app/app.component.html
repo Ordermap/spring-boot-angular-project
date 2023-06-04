@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Employee Details</h1>
+  <hr>
+  
+  <div class="row">
+    <div class="col-xl-3 col-md-4 col-sm-6"  *ngFor="let emp of employee">
+      <div class="card" >
+        <img src={{emp.imageUrl}} class="card-img-top img-thumbnail" style="max-height: 150px" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{emp.name}}</h5>
+          <p>{{emp.id}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

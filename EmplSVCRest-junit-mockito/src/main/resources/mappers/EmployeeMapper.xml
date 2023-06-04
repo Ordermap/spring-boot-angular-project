@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delta.poc.dao.EmplDaoIfc">
+<resultMap type="Employees" id="result">
+<result property="empId" column="EMPID"/>
+<result property="empName" column="EMPNAME"/>
+<result property="empAge" column="EMPAGE"/>
+<result property="empDesignation" column="EMPDESIGNATION"/>
+<result property="empLocation" column="EMPLOCATION"/>
+</resultMap>
+    
+    <select id="findAllEmployees" resultMap="result">
+        select empId, empName, empAge, empDesignation, empLocation
+  from Employee
+    </select>
+    <select id="findEmployeeById" resultType="Employees">
+        select empId, empName, empAge, empDesignation, empLocation
+  from Employee
+         WHERE empId =#{empId}
+    </select>
+<insert id="insertEmployee" parameterType="Employees" 
+    >
+      INSERT INTO Employee(empId,empName,empAge,empDesignation,empLocation) VALUES(#{empId},#{empName},#{empAge},#{empDesignation},#{empLocation})</insert>
+      <update id="updateEmployee">
+    UPDATE
+    Employee SET
+    empName=#{empName},
+    empAge=#{empAge},
+    empDesignation=#{empDesignation},
+    empLocation=#{empLocation}
+    
+    WHERE empId=#{empId}
+</update>
+<delete id="deleteEmployee" parameterType="int">
+    DELETE FROM Employee
+    WHERE empId =#{empId}
+</delete>
+</mapper>
+
+
+
+      
